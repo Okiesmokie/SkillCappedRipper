@@ -31,6 +31,8 @@
             this.statusStripProgressBar = new System.Windows.Forms.ToolStripProgressBar();
             this.listBoxFiles = new System.Windows.Forms.ListBox();
             this.fileSystemWatcher = new System.IO.FileSystemWatcher();
+            this.textBoxWrathFilename = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.statusStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher)).BeginInit();
             this.SuspendLayout();
@@ -38,7 +40,7 @@
             // labelSkillCappedURL
             // 
             this.labelSkillCappedURL.AutoSize = true;
-            this.labelSkillCappedURL.Location = new System.Drawing.Point(12, 9);
+            this.labelSkillCappedURL.Location = new System.Drawing.Point(12, 45);
             this.labelSkillCappedURL.Name = "labelSkillCappedURL";
             this.labelSkillCappedURL.Size = new System.Drawing.Size(101, 15);
             this.labelSkillCappedURL.TabIndex = 0;
@@ -48,7 +50,7 @@
             // 
             this.textBoxSkillCappedURL.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxSkillCappedURL.Location = new System.Drawing.Point(119, 6);
+            this.textBoxSkillCappedURL.Location = new System.Drawing.Point(119, 41);
             this.textBoxSkillCappedURL.Name = "textBoxSkillCappedURL";
             this.textBoxSkillCappedURL.Size = new System.Drawing.Size(238, 23);
             this.textBoxSkillCappedURL.TabIndex = 1;
@@ -58,7 +60,7 @@
             // buttonDownloadVideo
             // 
             this.buttonDownloadVideo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonDownloadVideo.Location = new System.Drawing.Point(363, 6);
+            this.buttonDownloadVideo.Location = new System.Drawing.Point(363, 41);
             this.buttonDownloadVideo.Name = "buttonDownloadVideo";
             this.buttonDownloadVideo.Size = new System.Drawing.Size(75, 23);
             this.buttonDownloadVideo.TabIndex = 2;
@@ -71,7 +73,7 @@
             this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.statusStripLabel,
             this.statusStripProgressBar});
-            this.statusStrip.Location = new System.Drawing.Point(0, 294);
+            this.statusStrip.Location = new System.Drawing.Point(0, 341);
             this.statusStrip.Name = "statusStrip";
             this.statusStrip.Size = new System.Drawing.Size(450, 22);
             this.statusStrip.TabIndex = 0;
@@ -80,7 +82,7 @@
             // statusStripLabel
             // 
             this.statusStripLabel.Name = "statusStripLabel";
-            this.statusStripLabel.Size = new System.Drawing.Size(302, 17);
+            this.statusStripLabel.Size = new System.Drawing.Size(435, 17);
             this.statusStripLabel.Spring = true;
             this.statusStripLabel.Text = "Ready";
             this.statusStripLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -99,7 +101,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.listBoxFiles.FormattingEnabled = true;
             this.listBoxFiles.ItemHeight = 15;
-            this.listBoxFiles.Location = new System.Drawing.Point(12, 35);
+            this.listBoxFiles.Location = new System.Drawing.Point(12, 80);
             this.listBoxFiles.Name = "listBoxFiles";
             this.listBoxFiles.Size = new System.Drawing.Size(426, 244);
             this.listBoxFiles.TabIndex = 3;
@@ -115,9 +117,29 @@
             this.fileSystemWatcher.Deleted += new System.IO.FileSystemEventHandler(this.fileSystemWatcher_Deleted);
             this.fileSystemWatcher.Renamed += new System.IO.RenamedEventHandler(this.fileSystemWatcher_Renamed);
             // 
+            // textBoxWrathFilename
+            // 
+            this.textBoxWrathFilename.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxWrathFilename.Location = new System.Drawing.Point(119, 12);
+            this.textBoxWrathFilename.Name = "textBoxWrathFilename";
+            this.textBoxWrathFilename.Size = new System.Drawing.Size(319, 23);
+            this.textBoxWrathFilename.TabIndex = 5;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(55, 15);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(58, 15);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Filename:";
+            // 
             // MainForm
             // 
-            this.ClientSize = new System.Drawing.Size(450, 316);
+            this.ClientSize = new System.Drawing.Size(450, 363);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.textBoxWrathFilename);
             this.Controls.Add(this.listBoxFiles);
             this.Controls.Add(this.labelSkillCappedURL);
             this.Controls.Add(this.textBoxSkillCappedURL);
@@ -144,5 +166,7 @@
         private ListBox listBoxFiles;
         private FileSystemWatcher fileSystemWatcher;
         private ToolStripProgressBar statusStripProgressBar;
+        private Label label1;
+        private TextBox textBoxWrathFilename;
     }
 }

@@ -32,7 +32,7 @@ namespace SkillCappedRipper {
             bool success = false;
 
             await Task.Run(() => {
-                success = skillCapped.GeneratePlaylist(textBoxSkillCappedURL.Text);
+                success = skillCapped.GeneratePlaylist(textBoxSkillCappedURL.Text, textBoxWrathFilename.Text);
             });
 
             statusStripProgressBar.Visible = false;

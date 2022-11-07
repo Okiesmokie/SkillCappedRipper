@@ -15,7 +15,7 @@ namespace SkillCappedRipper {
 
         private string lastErrorMessage = "";
 
-        public bool GeneratePlaylist(string uri) {
+        public bool GeneratePlaylist(string uri, string filename ="") {
             // Validate Uri
             try {
                 var uriParse = new Uri(uri);
@@ -36,9 +36,26 @@ namespace SkillCappedRipper {
                 return false;
             }
 
+            bool wrath = false;
             var uriParts = uri.Split("/");
-            var videoID = uriParts[uriParts.Length - 1];
-            var fileName = uriParts[uriParts.Length - 2] + ".m3u8";
+
+            for(int i = 0; i < uriParts.Length - 1; ++i) {
+                if(uriParts[i].ToLower().EndsWith("skill-capped.com")) {
+                    if(uriParts[i+1] == "wrath") wrath = true;
+                }
+            }
+
+            string videoID;
+            string fileName;
+
+            if(!wrath) {
+                videoID = uriParts[uriParts.Length - 1];
+                fileName = (filename != string.Empty ? filename + (filename.EndsWith(".m3u8") ? "" : ".m3u8") : uriParts[uriParts.Length - 2] + ".m3u8");
+            } else {
+                videoID = uriParts[uriParts.Length - 2];
+                fileName = (filename != string.Empty ? filename + (filename.EndsWith(".m3u8") ? "" : ".m3u8") : uriParts[uriParts.Length - 1] + ".m3u8");
+            }
+            
 
             using(var fp = File.CreateText(VideoPath + fileName)) {
                 // Write M3U headers

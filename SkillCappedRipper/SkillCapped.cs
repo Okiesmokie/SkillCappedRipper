@@ -45,6 +45,8 @@ namespace SkillCappedRipper {
                 }
             }
 
+            wrath = true;
+
             string videoID;
             string fileName;
 
@@ -55,7 +57,9 @@ namespace SkillCappedRipper {
                 videoID = uriParts[uriParts.Length - 2];
                 fileName = (filename != string.Empty ? filename + (filename.EndsWith(".m3u8") ? "" : ".m3u8") : uriParts[uriParts.Length - 1] + ".m3u8");
             }
-            
+
+
+            bool videoExists = false;
 
             using(var fp = File.CreateText(VideoPath + fileName)) {
                 // Write M3U headers
@@ -68,12 +72,19 @@ namespace SkillCappedRipper {
 
                     if(RemoteFileExists(partFileName)) {
                         fp.WriteLine(partFileName);
+                        videoExists = true;
                     } else {
                         break;
                     }
                 }
 
                 fp.WriteLine("#EXT-X-ENDLIST");
+            }
+
+            if(!videoExists) {
+                File.Delete(VideoPath + fileName);
+
+                return false;
             }
 
             return true;

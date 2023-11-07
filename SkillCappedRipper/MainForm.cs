@@ -33,6 +33,10 @@ namespace SkillCappedRipper {
 
             await Task.Run(() => {
                 success = skillCapped.GeneratePlaylist(textBoxSkillCappedURL.Text, textBoxWrathFilename.Text);
+
+                if(!success) {
+                    MessageBox.Show("Video not found, please check that the URL is correct", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             });
 
             statusStripProgressBar.Visible = false;
